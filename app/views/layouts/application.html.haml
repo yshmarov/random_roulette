@@ -13,9 +13,10 @@
     %p.alert= alert
     = link_to "Home", root_path
     - if current_user
-      = link_to "PiggyBanks", piggy_banks_path
       = link_to "Charges", charges_path
+      = link_to "PiggyBanks", piggy_banks_path
       = link_to "Shares", shares_path
+      = current_user.email
       Balance:
       = current_user.balance
       = link_to "Log out", destroy_user_session_path, method: :delete

@@ -3,13 +3,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :charges
+  has_many :shares
 
   def to_s
     email
   end
 
   def update_balance
-    update_column :balance, charges.map(&:amount).sum
+    update_column :balance, (charges.map(&:amount).sum - shares.map(&:size).sum) 
   end
 
 end

@@ -9,11 +9,11 @@ class ChargesController < ApplicationController
   end
 
   def create
-    @charge = Charge.new(params.require(:charge).permit(:user_id, :amount))
+    @charge = Charge.new(params.require(:charge).permit(:amount))
+    @charge.user = current_user
 
     if @charge.save
-      @user = User.find(@charge.user_id)
-      @user.update_balance
+      @charge.user.update_balance
       redirect_to charges_path, notice: 'Charge was successfully created.'
     else
       render :new
