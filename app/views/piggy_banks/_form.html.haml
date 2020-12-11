@@ -1,0 +1,14 @@
+= form_with(model: piggy_bank, local: true) do |form|
+  - if piggy_bank.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(piggy_bank.errors.count, "error")
+        prohibited this piggy_bank from being saved:
+      %ul
+        - piggy_bank.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = form.label :pool
+    = form.number_field :pool
+  .actions
+    = form.submit
