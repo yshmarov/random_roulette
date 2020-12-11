@@ -15,6 +15,9 @@ class SharesController < ApplicationController
     if @share.save
       @share.piggy_bank.update_available_shares
       @share.user.update_balance
+      if @share.piggy_bank.shares_available == 0
+        PiggyBank.create(pool: @share.piggy_bank.pool)
+      end
       redirect_to @share.piggy_bank, notice: 'Share was successfully created.'
     else
       render :new

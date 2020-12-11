@@ -7,6 +7,11 @@ class PiggyBank < ApplicationRecord
   def to_s
     pool
   end
+
+  after_create do 
+    update_column :shares_available, pool
+
+  end
   
   def update_available_shares
     update_column :shares_taken, shares.map(&:size).sum
