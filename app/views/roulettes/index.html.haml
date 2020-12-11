@@ -1,0 +1,8 @@
+.text-center
+  %h2
+    = action_name.capitalize
+    Roulettes
+
+.card-columns
+  - @roulettes.each do |roulette|
+    = render 'roulettes/roulette', roulette: roulette

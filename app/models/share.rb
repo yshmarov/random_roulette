@@ -1,5 +1,5 @@
 class Share < ApplicationRecord
-  belongs_to :piggy_bank
+  belongs_to :roulette
   belongs_to :user
 
   validates :size, presence: true
@@ -9,7 +9,7 @@ class Share < ApplicationRecord
 
   
   def size_smaller_or_equal_to_piggy_bank_shares_available
-    if size > piggy_bank.shares_available
+    if size > roulette.shares_available
       errors.add(:size, "can't be greater than shares available")
     end
   end

@@ -26,10 +26,10 @@
                 Balance:
                 = current_user.balance
           %p
-          = link_to "Roulettes", active_piggy_banks_path, class: "btn btn-sm btn-success"
+          = link_to "Roulettes", active_roulettes_path, class: "btn btn-sm btn-success"
           = link_to 'Top up balance', new_charge_path, class: "btn btn-sm btn-success"
           = link_to "Leaderboard", users_path, class: "btn btn-sm btn-primary"
-          = link_to "History", finished_piggy_banks_path, class: "btn btn-sm btn-secondary"
+          = link_to "History", finished_roulettes_path, class: "btn btn-sm btn-secondary"
           = link_to current_user.email, user_path(current_user), class: "btn btn-sm btn-secondary"
           = link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-sm btn-secondary"
         - else

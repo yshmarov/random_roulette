@@ -1,0 +1,14 @@
+= form_with(model: roulette, local: true) do |f|
+  - if roulette.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(roulette.errors.count, "error")
+        prohibited this roulette from being saved:
+      %ul
+        - roulette.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :pool
+    = f.number_field :pool
+  .actions
+    = f.button :submit, class: "btn btn-sm btn-success"

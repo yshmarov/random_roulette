@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_11_135925) do
+ActiveRecord::Schema.define(version: 2020_12_11_223915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2020_12_11_135925) do
     t.index ["user_id"], name: "index_charges_on_user_id"
   end
 
-  create_table "piggy_banks", force: :cascade do |t|
+  create_table "roulettes", force: :cascade do |t|
     t.integer "pool"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -33,11 +33,11 @@ ActiveRecord::Schema.define(version: 2020_12_11_135925) do
 
   create_table "shares", force: :cascade do |t|
     t.integer "size", default: 0, null: false
-    t.bigint "piggy_bank_id", null: false
+    t.bigint "roulette_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["piggy_bank_id"], name: "index_shares_on_piggy_bank_id"
+    t.index ["roulette_id"], name: "index_shares_on_roulette_id"
     t.index ["user_id"], name: "index_shares_on_user_id"
   end
 
@@ -55,6 +55,6 @@ ActiveRecord::Schema.define(version: 2020_12_11_135925) do
   end
 
   add_foreign_key "charges", "users"
-  add_foreign_key "shares", "piggy_banks"
+  add_foreign_key "shares", "roulettes"
   add_foreign_key "shares", "users"
 end

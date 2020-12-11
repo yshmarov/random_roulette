@@ -1,0 +1,16 @@
+.card.shadow
+  .card-header
+    %b= link_to "Draw № #{roulette.id}", roulette_path(roulette)
+  .card-body
+    .progress
+      .progress-bar.bg-success{style: "width: #{roulette.percent_left}%"}= number_to_percentage(roulette.percent_left, precision: 2)
+    Pool:
+    %b= roulette.pool
+    %br
+    Shares taken:
+    = roulette.shares_taken
+    %br
+    Shares available:
+    %b= roulette.shares_available
+  .card-footer
+    = link_to "Buy Shares", new_roulette_share_path(roulette), class: "btn btn-sm btn-success"

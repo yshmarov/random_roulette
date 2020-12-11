@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  root "piggy_banks#active"
-  resources :charges, only: [:new, :create]
-  resources :piggy_banks, except: [:index, :edit, :update, :destroy] do
+  root "roulettes#active"
+  resources :charges, except: [:index, :edit, :update, :destroy]
+  resources :roulettes, except: [:index, :edit, :update, :destroy] do
     resources :shares, except: [:index, :show, :edit, :update, :destroy]
     get :active, :finished, on: :collection
   end

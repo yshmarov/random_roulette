@@ -1,4 +1,4 @@
 User.create(email: "admin@example.com", password: "admin@example.com", password_confirmation: "admin@example.com")
-PiggyBank.create(pool: 10)
-PiggyBank.create(pool: 100)
-PiggyBank.create(pool: 1000)
+Roulette.create(pool: 10)
+Roulette.create(pool: 100)
+Roulette.create(pool: 1000)

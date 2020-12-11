@@ -1,4 +1,4 @@
-class PiggyBank < ApplicationRecord
+class Roulette < ApplicationRecord
 
   has_many :shares
 
