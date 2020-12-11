@@ -12,6 +12,13 @@
     %p.notice= notice
     %p.alert= alert
     = link_to "Home", root_path
-    = link_to "PiggyBanks", piggy_banks_path
-    = link_to "Charges", charges_path
+    - if current_user
+      = link_to "PiggyBanks", piggy_banks_path
+      = link_to "Charges", charges_path
+      Balance:
+      = current_user.balance
+      = link_to "Log out", destroy_user_session_path, method: :delete
+    - else
+      = link_to "Log in", new_user_session_path
+
     = yield
