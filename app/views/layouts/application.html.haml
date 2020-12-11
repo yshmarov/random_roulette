@@ -8,23 +8,30 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-  %body
-    %p.notice= notice
-    %p.alert= alert
-    = link_to "Home", root_path
-    - if current_user
-      = link_to "Charges", charges_path
-      = link_to "PiggyBanks", piggy_banks_path, class: "btn btn-sm btn-success"
-      = link_to "Shares", shares_path
-      .badge.badge-light
-        = current_user.email
-      .badge.badge-light
-        Balance:
-        = current_user.balance
-      = link_to '+ Top up balance', new_charge_path, class: "btn btn-sm btn-success"
-
-      = link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-sm btn-secondary"
-    - else
-      = link_to "Log in", new_user_session_path, class: "btn btn-sm btn-secondary"
-
-    = yield
+  %body.bg-light
+    - if notice.present?
+      %p.notice= notice
+    - if alert.present?
+      %p.alert= alert
+    %br
+    .container.bg-danger.rounded
+      %br
+      = link_to root_path, class: "btn btn-sm btn-default" do
+        %b RandomRoulette
+      - if current_user
+        = link_to "Charges", charges_path, class: "btn btn-sm btn-primary"
+        = link_to "PiggyBanks", piggy_banks_path, class: "btn btn-sm btn-success"
+        = link_to "Shares", shares_path, class: "btn btn-sm btn-primary"
+        .badge.badge-light
+          = current_user.email
+        .badge.badge-light
+          Balance:
+          = current_user.balance
+        = link_to '+ Top up balance', new_charge_path, class: "btn btn-sm btn-success"
+  
+        = link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-sm btn-secondary"
+      - else
+        = link_to "Log in", new_user_session_path, class: "btn btn-sm btn-secondary"
+      %br  
+      = yield
+      %br

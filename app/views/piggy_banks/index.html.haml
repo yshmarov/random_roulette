@@ -1,18 +1,18 @@
-%p#notice= notice
 %h1 Piggy Banks
-%table
-  %thead
-    %tr
-      %th ID
-      %th Pool
-      %th shares_taken
-      %th shares_available
-  %tbody
-    - @piggy_banks.each do |piggy_bank|
-      %tr
-        %td= link_to piggy_bank.id, piggy_bank
-        %td= piggy_bank.pool
-        %td= piggy_bank.shares_taken
-        %td= piggy_bank.shares_available
-%br/
-= link_to 'New Piggy Bank', new_piggy_bank_path
+
+.card-columns
+  - @piggy_banks.each do |piggy_bank|
+    .card
+      .card-header.bg-warning
+        %b= link_to "Draw № #{piggy_bank.id}", piggy_bank
+      .card-body
+        Pool:
+        %b= piggy_bank.pool
+        /%br
+        /Shares taken
+        /= piggy_bank.shares_taken
+        %br
+        Shares available
+        %b= piggy_bank.shares_available
+      .card-footer
+        = link_to "Buy Shares", new_share_path, class: "btn btn-sm btn-success"
