@@ -5,7 +5,7 @@ class Roulette < ApplicationRecord
   scope :active, -> { where("shares_available > ?", 0) }
   scope :finished, -> { where(shares_available: 0) }
 
-  validates :shares_total, uniqueness: true, presence: true
+  validates :shares_total, presence: true
 
   def to_s
     shares_total

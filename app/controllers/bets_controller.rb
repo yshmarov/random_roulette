@@ -16,9 +16,10 @@ class BetsController < ApplicationController
       @bet.user.update_balance
       
       # BELOW NOT WORKING
-      if @bet.roulette.shares_available == 0
-        Roulette.create(pool: @bet.roulette.pool)
-        # Roulette.create(pool: @roulette.pool)
+      # if @bet.roulette.shares_available == 0
+      if @roulette.shares_available == 0
+        Roulette.create(pool: @roulette.pool)
+        # Roulette.create(pool: @bet.roulette.pool)
       end
       redirect_to @bet.roulette, notice: 'Bet was successfully created.'
     else
