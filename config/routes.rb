@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :shares
   resources :charges, except: [:show, :edit, :update, :destroy]
   devise_for :users
   root "static_pages#landing_page"

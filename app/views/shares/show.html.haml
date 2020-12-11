@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Size:
+  = @share.size
+%p
+  %b Piggy bank:
+  = @share.piggy_bank
+%p
+  %b User:
+  = @share.user
+
+= link_to 'Edit', edit_share_path(@share)
+\|
+= link_to 'Back', shares_path
