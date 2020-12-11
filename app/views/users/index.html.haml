@@ -8,8 +8,10 @@
       %tr
         %th User
         %th Balance
-        %th Charges
-        %th Shares
+        %th Charges sum
+        %th Charges count
+        %th Shares sum
+        %th Shares count
         %th Amount won
         %th Victories
   
@@ -18,8 +20,10 @@
         %tr
           %td= link_to user.email, user_path(user)
           %td= user.balance
-          %th= user.charges.map(&:amount).sum
-          %th= user.shares.map(&:size).sum
+          %th= user.charges_sum
+          %th= user.charges_count
+          %th= user.bets_sum
+          %th= user.bets_count
           %th= user.amount_won
           %th
 

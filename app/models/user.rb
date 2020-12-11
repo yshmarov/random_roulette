@@ -10,11 +10,13 @@ class User < ApplicationRecord
   end
 
   def update_balance
-    update_column :balance, (charges.map(&:amount).sum - bets.map(&:size).sum) 
+    update_column :charges_sum, (charges.map(&:amount).sum) 
+    update_column :bets_sum, (bets.map(&:size).sum) 
+    update_column :balance, (charges_sum - bets_sum) 
   end
 
   def amount_won
-    balance - charges.map(&:amount).sum
+    balance - charges_sum
   end
 
 end
