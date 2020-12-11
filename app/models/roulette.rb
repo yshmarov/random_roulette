@@ -5,23 +5,23 @@ class Roulette < ApplicationRecord
   scope :active, -> { where("shares_available > ?", 0) }
   scope :finished, -> { where(shares_available: 0) }
 
-  validates :pool, uniqueness: true, presence: true
+  validates :shares_total, uniqueness: true, presence: true
 
   def to_s
-    pool
+    shares_total
   end
 
   after_create do 
-    update_column :shares_available, pool
+    update_column :shares_available, shares_total
   end
   
   def update_available_shares
     update_column :shares_taken, shares.map(&:size).sum
-    update_column :shares_available, (pool - shares_taken)
+    update_column :shares_available, (shares_total - shares_taken)
   end
   
   def percent_left
-    shares_taken.to_f/pool.to_f*100
+    shares_taken.to_f/shares_total.to_f*100
   end
   
 end

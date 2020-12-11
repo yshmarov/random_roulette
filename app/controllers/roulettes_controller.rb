@@ -20,7 +20,7 @@ class RoulettesController < ApplicationController
   end
 
   def create
-    @roulette = Roulette.new(params.require(:roulette).permit(:pool))
+    @roulette = Roulette.new(params.require(:roulette).permit(:shares_total))
 
     if @roulette.save
       # @roulette.shares_available = @roulette.pool

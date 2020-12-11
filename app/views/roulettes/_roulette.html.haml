@@ -5,7 +5,7 @@
     .progress
       .progress-bar.bg-success{style: "width: #{roulette.percent_left}%"}= number_to_percentage(roulette.percent_left, precision: 2)
     Pool:
-    %b= roulette.pool
+    %b= roulette.shares_total
     %br
     Shares taken:
     = roulette.shares_taken

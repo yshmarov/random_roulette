@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_11_223915) do
+ActiveRecord::Schema.define(version: 2020_12_11_225532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2020_12_11_223915) do
   end
 
   create_table "roulettes", force: :cascade do |t|
-    t.integer "pool"
+    t.integer "shares_total"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "shares_taken", default: 0, null: false
