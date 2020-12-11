@@ -1,0 +1,22 @@
+<%= form_with(model: piggy_bank, local: true) do |form| %>
+  <% if piggy_bank.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(piggy_bank.errors.count, "error") %> prohibited this piggy_bank from being saved:</h2>
+
+      <ul>
+        <% piggy_bank.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :pool %>
+    <%= form.number_field :pool %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

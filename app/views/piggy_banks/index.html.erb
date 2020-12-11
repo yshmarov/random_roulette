@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Piggy Banks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pool</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @piggy_banks.each do |piggy_bank| %>
+      <tr>
+        <td><%= piggy_bank.pool %></td>
+        <td><%= link_to 'Show', piggy_bank %></td>
+        <td><%= link_to 'Edit', edit_piggy_bank_path(piggy_bank) %></td>
+        <td><%= link_to 'Destroy', piggy_bank, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Piggy Bank', new_piggy_bank_path %>
