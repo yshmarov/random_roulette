@@ -1,5 +1,4 @@
-%p#notice= notice
-%p
-  %strong Pool:
-  = @piggy_bank.pool
-= link_to 'Back', piggy_banks_path
+= render 'piggy_banks/roulette', piggy_bank: @piggy_bank
+%br
+= render 'piggy_banks/shares'
+%br

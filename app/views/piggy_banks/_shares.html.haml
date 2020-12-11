@@ -1,0 +1,18 @@
+.text-center
+  %h2
+    Shares
+
+.table-responsive
+  %table.table.table-sm.table-striped.bg-light.shadow
+    %thead
+      %tr
+        %th Size
+        %th Piggy bank
+        %th User
+  
+    %tbody
+      - @shares.each do |share|
+        %tr
+          %td= share.size
+          %td= share.piggy_bank
+          %td= share.user

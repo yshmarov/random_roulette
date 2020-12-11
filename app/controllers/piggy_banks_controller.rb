@@ -1,11 +1,18 @@
 class PiggyBanksController < ApplicationController
-  before_action :set_piggy_bank, only: [:show]
 
-  def index
-    @piggy_banks = PiggyBank.all
+  def active
+    @piggy_banks = PiggyBank.active.order(shares_available: :asc)
+    render "index"
+  end
+
+  def finished
+    @piggy_banks = PiggyBank.finished.order(shares_available: :asc)
+    render "index"
   end
 
   def show
+    @piggy_bank = PiggyBank.find(params[:id])
+    @shares = @piggy_bank.shares
   end
 
   def new
@@ -13,7 +20,7 @@ class PiggyBanksController < ApplicationController
   end
 
   def create
-    @piggy_bank = PiggyBank.new(piggy_bank_params)
+    @piggy_bank = PiggyBank.new(params.require(:piggy_bank).permit(:pool))
 
     if @piggy_bank.save
       # @piggy_bank.shares_available = @piggy_bank.pool
@@ -23,12 +30,4 @@ class PiggyBanksController < ApplicationController
     end
   end
 
-  private
-    def set_piggy_bank
-      @piggy_bank = PiggyBank.find(params[:id])
-    end
-
-    def piggy_bank_params
-      params.require(:piggy_bank).permit(:pool)
-    end
 end

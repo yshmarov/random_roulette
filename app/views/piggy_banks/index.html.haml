@@ -1,18 +1,8 @@
-%h1 Piggy Banks
+.text-center
+  %h2
+    = action_name.capitalize
+    Roulettes
 
 .card-columns
   - @piggy_banks.each do |piggy_bank|
-    .card
-      .card-header.bg-warning
-        %b= link_to "Draw № #{piggy_bank.id}", piggy_bank
-      .card-body
-        Pool:
-        %b= piggy_bank.pool
-        /%br
-        /Shares taken
-        /= piggy_bank.shares_taken
-        %br
-        Shares available
-        %b= piggy_bank.shares_available
-      .card-footer
-        = link_to "Buy Shares", new_piggy_bank_share_path(piggy_bank), class: "btn btn-sm btn-success"
+    = render 'piggy_banks/roulette', piggy_bank: piggy_bank

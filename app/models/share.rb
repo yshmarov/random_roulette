@@ -3,7 +3,7 @@ class Share < ApplicationRecord
   belongs_to :user
 
   validates :size, presence: true
-  # size not more than piggy_bank.shares_available
+  validates :size, numericality: {greater_than: 0}
 
   validate :size_smaller_or_equal_to_piggy_bank_shares_available
 

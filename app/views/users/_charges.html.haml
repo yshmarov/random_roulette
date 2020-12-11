@@ -1,0 +1,18 @@
+.text-center
+  %h2
+    Charges
+
+.table-responsive
+  %table.table.table-sm.table-striped.bg-light.shadow
+    %thead
+      %tr
+        %th id
+        %th Timestamp
+        %th Amount
+  
+    %tbody
+      - @charges.each do |charge|
+        %tr
+          %td= charge.id
+          %td= charge.created_at
+          %td= charge.amount

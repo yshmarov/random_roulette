@@ -1,0 +1,16 @@
+.card.shadow
+  .card-header
+    %b= link_to "Draw № #{piggy_bank.id}", piggy_bank_path(piggy_bank)
+  .card-body
+    .progress
+      .progress-bar.bg-success{style: "width: #{piggy_bank.percent_left}%"}= number_to_percentage(piggy_bank.percent_left, precision: 2)
+    Pool:
+    %b= piggy_bank.pool
+    %br
+    Shares taken:
+    = piggy_bank.shares_taken
+    %br
+    Shares available:
+    %b= piggy_bank.shares_available
+  .card-footer
+    = link_to "Buy Shares", new_piggy_bank_share_path(piggy_bank), class: "btn btn-sm btn-success"

@@ -13,4 +13,8 @@ class User < ApplicationRecord
     update_column :balance, (charges.map(&:amount).sum - shares.map(&:size).sum) 
   end
 
+  def amount_won
+    balance - charges.map(&:amount).sum
+  end
+
 end

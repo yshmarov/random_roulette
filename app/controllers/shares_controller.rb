@@ -1,9 +1,5 @@
 class SharesController < ApplicationController
 
-  def index
-    @shares = Share.all
-  end
-
   def new
     @piggy_bank = PiggyBank.find(params[:piggy_bank_id])
     @share = Share.new

@@ -1,0 +1,18 @@
+.card.shadow
+  .card-header
+    %b= link_to @user.email, user_path(@user)
+  .card-body
+    %b Balance:
+    = @user.balance
+    %br
+    %b Charges:
+    = @user.charges.map(&:amount).sum
+    %br
+    %b Shares:
+    = @user.shares.map(&:size).sum
+    %br
+    %b Amount Won:
+    = @user.amount_won
+%br
+= render 'users/charges'
+%br

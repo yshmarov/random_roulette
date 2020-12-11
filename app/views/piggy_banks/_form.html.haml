@@ -1,4 +1,4 @@
-= form_with(model: piggy_bank, local: true) do |form|
+= form_with(model: piggy_bank, local: true) do |f|
   - if piggy_bank.errors.any?
     #error_explanation
       %h2
@@ -8,7 +8,7 @@
         - piggy_bank.errors.full_messages.each do |message|
           %li= message
   .field
-    = form.label :pool
-    = form.number_field :pool
+    = f.label :pool
+    = f.number_field :pool
   .actions
-    = form.submit
+    = f.button :submit, class: "btn btn-sm btn-success"

@@ -1,5 +1,13 @@
-%h1 New share
-
-= render 'form'
-%br
-= link_to 'Cancel', piggy_bank_path(@piggy_bank), class: "btn btn-sm btn-secondary"
+.card.shadow
+  .card-header
+    %h2 Buy share
+  .card-body
+    = simple_form_for([@piggy_bank, @share]) do |f|
+      = f.error_notification
+      = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+      .form-inputs
+        = f.input :size, autofocus: true
+      .form-actions
+        = f.button :submit, class: "btn btn-sm btn-success"
+  .card-footer
+    = link_to 'Cancel', piggy_bank_path(@piggy_bank), class: "btn btn-sm btn-secondary"

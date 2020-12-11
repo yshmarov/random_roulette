@@ -1,0 +1,26 @@
+.text-center
+  %h2
+    Leaderboard
+
+.table-responsive
+  %table.table.table-sm.table-striped.bg-light.shadow
+    %thead
+      %tr
+        %th User
+        %th Balance
+        %th Charges
+        %th Shares
+        %th Amount won
+        %th Victories
+  
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td= link_to user.email, user_path(user)
+          %td= user.balance
+          %th= user.charges.map(&:amount).sum
+          %th= user.shares.map(&:size).sum
+          %th= user.amount_won
+          %th
+
+%br

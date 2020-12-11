@@ -1,5 +1,11 @@
-%h1 New charge
-
-= render 'form'
-
-= link_to 'Back', charges_path
+.card.shadow
+  .card-header
+    %h2 Top up balance
+  .card-body
+    = simple_form_for(@charge) do |f|
+      = f.error_notification
+      = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+      .form-inputs
+        = f.input :amount, autofocus: true
+      .form-actions
+        = f.button :submit, class: "btn btn-sm btn-success"
