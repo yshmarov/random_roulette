@@ -10,7 +10,6 @@ class PiggyBank < ApplicationRecord
 
   after_create do 
     update_column :shares_available, pool
-
   end
   
   def update_available_shares

@@ -15,8 +15,8 @@ class PiggyBanksController < ApplicationController
   def create
     @piggy_bank = PiggyBank.new(piggy_bank_params)
 
-    # @piggy_bank.shares_available = @piggy_bank.pool
     if @piggy_bank.save
+      # @piggy_bank.shares_available = @piggy_bank.pool
       redirect_to @piggy_bank, notice: 'Piggy bank was successfully created.'
     else
       render :new
