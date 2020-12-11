@@ -1,6 +1,6 @@
 .text-center
   %h2
-    Shares
+    Bets
 
 .table-responsive
   %table.table.table-sm.table-striped.bg-light.shadow
@@ -11,8 +11,8 @@
         %th User
   
     %tbody
-      - @shares.each do |share|
+      - @bets.each do |bet|
         %tr
-          %td= share.size
-          %td= share.roulette
-          %td= share.user
+          %td= bet.size
+          %td= bet.roulette
+          %td= bet.user

@@ -1,6 +1,6 @@
 class Roulette < ApplicationRecord
 
-  has_many :shares
+  has_many :bets
 
   scope :active, -> { where("shares_available > ?", 0) }
   scope :finished, -> { where(shares_available: 0) }
@@ -16,7 +16,7 @@ class Roulette < ApplicationRecord
   end
   
   def update_available_shares
-    update_column :shares_taken, shares.map(&:size).sum
+    update_column :shares_taken, bets.map(&:size).sum
     update_column :shares_available, (shares_total - shares_taken)
   end
   

@@ -12,7 +12,7 @@ class RoulettesController < ApplicationController
 
   def show
     @roulette = Roulette.find(params[:id])
-    @shares = @roulette.shares
+    @bets = @roulette.bets
   end
 
   def new

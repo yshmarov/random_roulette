@@ -9,7 +9,7 @@
     = @user.charges.map(&:amount).sum
     %br
     %b Shares:
-    = @user.shares.map(&:size).sum
+    = @user.bets.map(&:size).sum
     %br
     %b Amount Won:
     = @user.amount_won
