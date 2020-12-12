@@ -21,7 +21,7 @@
       #{current_user.bets.where(roulette: roulette).map(&:size).sum}/#{roulette.shares_total}
 
   .card-footer
-    - unless roulette.shares_available.zero?
+    - if roulette.active?
       = link_to new_roulette_bet_path(roulette, size: 1), class: "btn btn-sm btn-success btn-block" do
         Bet 1 (win chance: 1/#{roulette.shares_total})
       = link_to new_roulette_bet_path(roulette, size: roulette.shares_available/2), class: "btn btn-sm btn-success btn-block" do
@@ -31,4 +31,9 @@
       = link_to new_roulette_bet_path(roulette), class: "btn btn-sm btn-success btn-block" do
         Custom bet
     - else
-      Finished
+      Winner:
+      - if roulette.user.present?
+        = link_to roulette.user, user_path(roulette.user)
+
+
+
