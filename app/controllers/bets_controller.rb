@@ -15,12 +15,11 @@ class BetsController < ApplicationController
       @bet.roulette.update_available_shares
       @bet.user.update_balance
 
-      # not working      
-      # @new_shares = @bet.size + @roulette.shares_taken
-      # if @new_shares.zero?
-      #   Roulette.create(shares_total: @roulette.shares_total)
-      # end
-      redirect_to @bet.roulette, notice: "Bet was successfully created #{@new_shares}."
+      if @bet.roulette.shares_available.zero?
+        Roulette.create(shares_total: @roulette.shares_total)
+      end
+
+      redirect_to @bet.roulette, notice: "Bet was successfully created #{@roulette.shares_available}."
     else
       render :new
     end
