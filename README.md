@@ -7,6 +7,10 @@ users leaderboard
 charged - only when wants to withdraw funds
 can not buy shares if balance < @share.amount!!
 
+TODO
+
+magic bet ammounts
+
 when pool filled
   select random winner and transfer to his account
   create new pool

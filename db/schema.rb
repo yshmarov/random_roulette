@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_12_002357) do
+ActiveRecord::Schema.define(version: 2020_12_12_005625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2020_12_12_002357) do
     t.integer "shares_taken", default: 0, null: false
     t.integer "shares_available", default: 0, null: false
     t.integer "percent_left", default: 0, null: false
+    t.integer "bets_count", default: 0, null: false
   end
 
   create_table "users", force: :cascade do |t|
