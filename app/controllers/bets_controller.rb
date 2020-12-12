@@ -8,20 +8,19 @@ class BetsController < ApplicationController
   def create
     @bet = Bet.new(params.require(:bet).permit(:size))
     @roulette = Roulette.find(params[:roulette_id])
-    @bet.roulette_id = @roulette.id
+    @bet.roulette = @roulette
     @bet.user = current_user
 
     if @bet.save
       @bet.roulette.update_available_shares
       @bet.user.update_balance
-      
-      # BELOW NOT WORKING
-      # if @bet.roulette.shares_available == 0
-      if @roulette.shares_available == 0
-        Roulette.create(pool: @roulette.pool)
-        # Roulette.create(pool: @bet.roulette.pool)
-      end
-      redirect_to @bet.roulette, notice: 'Bet was successfully created.'
+
+      # not working      
+      # @new_shares = @bet.size + @roulette.shares_taken
+      # if @new_shares.zero?
+      #   Roulette.create(shares_total: @roulette.shares_total)
+      # end
+      redirect_to @bet.roulette, notice: "Bet was successfully created #{@new_shares}."
     else
       render :new
     end

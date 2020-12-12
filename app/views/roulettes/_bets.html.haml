@@ -6,13 +6,15 @@
   %table.table.table-sm.table-striped.bg-light.shadow
     %thead
       %tr
+        %th id
+        %th Timestamp
         %th Size
-        %th Piggy bank
         %th User
   
     %tbody
       - @bets.each do |bet|
         %tr
+          %td= bet.id
+          %td= bet.created_at
           %td= bet.size
-          %td= bet.roulette
           %td= bet.user

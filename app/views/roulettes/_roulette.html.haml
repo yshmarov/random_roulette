@@ -13,4 +13,7 @@
     Shares available:
     %b= roulette.shares_available
   .card-footer
-    = link_to "Make a bet", new_roulette_bet_path(roulette), class: "btn btn-sm btn-success"
+    - unless roulette.shares_available.zero?
+      = link_to "Make a bet", new_roulette_bet_path(roulette), class: "btn btn-sm btn-success"
+    - else
+      Finished
