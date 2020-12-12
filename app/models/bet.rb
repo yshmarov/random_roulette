@@ -21,4 +21,10 @@ class Bet < ApplicationRecord
     end
   end
 
+  #after_create do
+  #  if roulette.shares_available.zero?
+  #    Roulette.create(shares_total: @roulette.shares_total)
+  #  end
+  #end
+
 end

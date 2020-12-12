@@ -5,14 +5,21 @@
     %b Balance:
     = @user.balance
     %br
-    %b Charges:
-    = @user.charges.map(&:amount).sum
+    %b Charges sum:
+    = @user.charges_sum
     %br
-    %b Shares:
-    = @user.bets.map(&:size).sum
+    %b Charges count:
+    = @user.charges_count
+    %br
+    %b Shares sum:
+    = @user.bets_sum
+    %br
+    %b Shares count:
+    = @user.bets_count
     %br
     %b Amount Won:
     = @user.amount_won
+
 %br
-= render 'users/charges'
+= render 'charges/charges'
 %br
