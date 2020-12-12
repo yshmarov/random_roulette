@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @charges = @user.charges
+    @bets = @user.bets
   end
   
 end

@@ -1,6 +1,6 @@
 class Bet < ApplicationRecord
   belongs_to :roulette
-  belongs_to :user
+  belongs_to :user, counter_cache: true
 
   validates :size, presence: true
   validates :size, numericality: {greater_than: 0}
