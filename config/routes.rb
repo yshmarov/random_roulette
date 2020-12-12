@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :charges, except: [:index, :edit, :update, :destroy]
 
-  resources :roulettes, except: [:index, :edit, :update, :destroy] do
+  resources :roulettes, except: [:create, :new, :index, :edit, :update, :destroy] do
     resources :bets, except: [:index, :show, :edit, :update, :destroy]
     get :active, :finished, on: :collection
   end

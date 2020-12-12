@@ -15,19 +15,4 @@ class RoulettesController < ApplicationController
     @bets = @roulette.bets
   end
 
-  def new
-    @roulette = Roulette.new
-  end
-
-  def create
-    @roulette = Roulette.new(params.require(:roulette).permit(:shares_total))
-
-    if @roulette.save
-      # @roulette.shares_available = @roulette.shares_total
-      redirect_to @roulette, notice: 'Piggy bank was successfully created.'
-    else
-      render :new
-    end
-  end
-
 end
