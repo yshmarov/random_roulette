@@ -15,3 +15,7 @@ when pool filled
   select random winner and transfer to his account
   create new pool
 
+
+Roulette format:
+- piggy bank
+- duel

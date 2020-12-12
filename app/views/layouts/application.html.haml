@@ -15,7 +15,7 @@
     - if alert.present?
       %p.alert= alert
     %br
-    .container.bg-danger.rounded
+    .container.bg-purple.rounded
       %br
       .text-center
         = link_to root_path, class: "text-dark" do
@@ -37,3 +37,11 @@
       %hr
       = yield
       %br
+  %footer
+    .container.text-light
+      Built with <3
+      %br
+      Source code: https://github.com/yshmarov/random_roulette
+      %br
+      Live demo: https://randomroulette.herokuapp.com/
+

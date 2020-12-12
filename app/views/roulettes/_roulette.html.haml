@@ -2,20 +2,25 @@
   .card-header
     %b= link_to "Draw № #{roulette.id}", roulette_path(roulette)
   .card-body
+    .text-center
+      %h1
+        Pool:
+        %b= roulette.shares_total
+    %br
     .progress
-      .progress-bar.bg-success{style: "width: #{roulette.percent_left}%"}= number_to_percentage(roulette.percent_left, precision: 2)
-    Pool:
-    %b= roulette.shares_total
-    %br
-    Shares taken:
-    = roulette.shares_taken
-    %br
-    Shares available:
-    %b= roulette.shares_available
+      .progress-bar.bg-danger{style: "width: #{roulette.percent_left}%"}
+        %b= roulette.shares_taken
+      .progress-bar.bg-success{style: "width: #{100 - roulette.percent_left}%"}
+        %b= roulette.shares_available
   .card-footer
     - unless roulette.shares_available.zero?
-      = link_to "Bet $1", new_roulette_bet_path(roulette, size: 1), class: "btn btn-sm btn-success"
-      = link_to "Bet $2", new_roulette_bet_path(roulette, size: 2), class: "btn btn-sm btn-success"
-      = link_to "Custom amount", new_roulette_bet_path(roulette), class: "btn btn-sm btn-success"
+      = link_to new_roulette_bet_path(roulette, size: 1), class: "btn btn-sm btn-success btn-block" do
+        Bet 1 (win chance: 1/#{roulette.shares_total})
+      = link_to new_roulette_bet_path(roulette, size: roulette.shares_available/2), class: "btn btn-sm btn-success btn-block" do
+        Bet #{roulette.shares_available/2} (win chance: #{roulette.shares_available/2}/#{roulette.shares_total})
+      = link_to new_roulette_bet_path(roulette, size: roulette.shares_available), class: "btn btn-sm btn-success btn-block" do
+        Bet #{roulette.shares_available} (win chance: #{roulette.shares_available}/#{roulette.shares_total})
+      = link_to new_roulette_bet_path(roulette), class: "btn btn-sm btn-success btn-block" do
+        Custom bet
     - else
       Finished
