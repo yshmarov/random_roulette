@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :bets
 
   def to_s
-    email
+    email.split(/@/).first
   end
 
   def update_balance
