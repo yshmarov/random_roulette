@@ -11,9 +11,11 @@
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
   %body.bg-dark
     - if notice.present?
-      %p.notice= notice
+      .container-fluid.bg-success
+        %p.notice= notice
     - if alert.present?
-      %p.alert= alert
+      .container-fluid.bg-primary
+        %p.alert= alert
     %br
     .container.bg-purple.rounded
       %br
@@ -22,7 +24,7 @@
           %h1 RandomRoulette
         - if current_user
           %h3
-            .badge.badge-light
+            .badge.badge-warning
               %b 
                 Balance:
                 = current_user.balance

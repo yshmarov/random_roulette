@@ -8,10 +8,18 @@
         %b= roulette.shares_total
     %br
     .progress
-      .progress-bar.bg-danger{style: "width: #{roulette.percent_left}%"}
+      .progress-bar.bg-success{style: "width: #{roulette.percent_left}%"}
         %b= roulette.shares_taken
-      .progress-bar.bg-success{style: "width: #{100 - roulette.percent_left}%"}
+      .progress-bar.bg-danger{style: "width: #{100 - roulette.percent_left}%"}
         %b= roulette.shares_available
+  - if Bet.where(user: current_user, roulette: roulette).any?
+    .card-footer
+      Your current bet:
+      = current_user.bets.where(roulette: roulette).map(&:size).sum
+      %br
+      Win chance:
+      #{current_user.bets.where(roulette: roulette).map(&:size).sum}/#{roulette.shares_total}
+
   .card-footer
     - unless roulette.shares_available.zero?
       = link_to new_roulette_bet_path(roulette, size: 1), class: "btn btn-sm btn-success btn-block" do
