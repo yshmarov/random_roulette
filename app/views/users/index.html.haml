@@ -8,12 +8,12 @@
       %tr
         %th User
         %th Balance
-        %th Charges sum
-        %th Charges count
-        %th Shares sum
-        %th Shares count
-        %th Amount won
-        %th Victories
+        %th Top-up sum
+        %th Top-up count
+        %th Spent
+        %th Games played
+        %th Roulettes won
+        %th Shares won
   
     %tbody
       - @users.each do |user|
@@ -24,7 +24,8 @@
           %th= user.charges_count
           %th= user.bets_sum
           %th= user.bets_count
-          %th= user.amount_won
+          %th= user.roulettes_count
+          %th= user.shares_won
           %th
 
 %br

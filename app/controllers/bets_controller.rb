@@ -19,6 +19,8 @@ class BetsController < ApplicationController
         # randomizer will be here
         weighted_random_winner = User.first
         @roulette.update(user: weighted_random_winner)
+        
+        weighted_random_winner.update_balance
 
         Roulette.create(shares_total: @roulette.shares_total)
       end

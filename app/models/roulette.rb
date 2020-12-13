@@ -1,7 +1,7 @@
 class Roulette < ApplicationRecord
 
   has_many :bets
-  belongs_to :user, required: false # winner
+  belongs_to :user, required: false, counter_cache: true # winner
 
   scope :active, -> { where("shares_available > ?", 0) }
   scope :finished, -> { where(shares_available: 0) }

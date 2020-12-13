@@ -4,15 +4,17 @@ class User < ApplicationRecord
 
   has_many :charges
   has_many :bets
+  has_many :roulettes
 
   def to_s
     email.split(/@/).first
   end
 
   def update_balance
+    update_column :shares_won, (roulettes.map(&:shares_total).sum) 
     update_column :charges_sum, (charges.map(&:amount).sum) 
     update_column :bets_sum, (bets.map(&:size).sum) 
-    update_column :balance, (charges_sum - bets_sum) 
+    update_column :balance, (charges_sum - bets_sum + shares_won) 
   end
 
   def amount_won
