@@ -25,7 +25,7 @@ class BetsController < ApplicationController
         Roulette.create(shares_total: @roulette.shares_total)
       end
 
-      redirect_to @bet.roulette, notice: "Bet was successfully created #{@roulette.shares_available}."
+      redirect_to @bet.roulette, notice: "You've made a bet!"
     else
       render :new
     end

@@ -1,11 +1,12 @@
 .card.shadow.bg-dark.text-light
   .card-header
     %b= link_to "Game № #{roulette.id}", roulette_path(roulette)
-  .card-body
+  .card-footer
     .text-center
       %h1
-        Pool:
+        win
         %b= roulette.shares_total
+        credits
     %br
     .progress
       .progress-bar.bg-success{style: "width: #{roulette.percent_left}%"}
@@ -22,13 +23,22 @@
 
   .card-footer
     - if roulette.active?
-      = link_to new_roulette_bet_path(roulette, size: 1), class: "btn btn-sm btn-success btn-block" do
-        Bet 1 (win chance: 1/#{roulette.shares_total})
-      = link_to new_roulette_bet_path(roulette, size: roulette.shares_available/2), class: "btn btn-sm btn-success btn-block" do
-        Bet #{roulette.shares_available/2} (win chance: #{roulette.shares_available/2}/#{roulette.shares_total})
-      = link_to new_roulette_bet_path(roulette, size: roulette.shares_available), class: "btn btn-sm btn-success btn-block" do
-        Bet #{roulette.shares_available} (win chance: #{roulette.shares_available}/#{roulette.shares_total})
-      = link_to new_roulette_bet_path(roulette), class: "btn btn-sm btn-success btn-block" do
+      = link_to new_roulette_bet_path(roulette, size: 1), class: "btn btn-md btn-success btn-block" do
+        Bet #{pluralize(1, 'credit')} 
+        %br
+        %small
+          (win chance: 1/#{roulette.shares_total})
+      = link_to new_roulette_bet_path(roulette, size: roulette.shares_available/2), class: "btn btn-md btn-success btn-block" do
+        Bet #{pluralize(roulette.shares_available/2, 'credit')} 
+        %br
+        %small
+          (win chance: #{roulette.shares_available/2}/#{roulette.shares_total})
+      = link_to new_roulette_bet_path(roulette, size: roulette.shares_available), class: "btn btn-md btn-success btn-block" do
+        Bet #{pluralize(roulette.shares_available, 'credit')} 
+        %br
+        %small
+          (win chance: #{roulette.shares_available}/#{roulette.shares_total})
+      = link_to new_roulette_bet_path(roulette), class: "btn btn-md btn-success btn-block" do
         Custom bet
     - else
       Winner:

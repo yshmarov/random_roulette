@@ -2,23 +2,24 @@
   .card-header
     %b= link_to @user.email, user_path(@user)
   .card-body
+    %b Credits bought:
+    = @user.charges_sum
+    %br
+    %b Credits Spent:
+    = @user.bets_sum
+    %br
+    %b Credits won:
+    = @user.shares_won
+    %br
     %b Balance:
     = @user.balance
     %br
-    %b Charges sum:
-    = @user.charges_sum
-    %br
-    %b Charges count:
-    = @user.charges_count
-    %br
-    %b Shares sum:
-    = @user.bets_sum
-    %br
-    %b Shares count:
+    %b Games played:
     = @user.bets_count
     %br
-    %b Amount Won:
-    = @user.amount_won
+    %b Games won:
+    = @user.roulettes_count
+  
 
 %br
 = render 'charges/charges'
