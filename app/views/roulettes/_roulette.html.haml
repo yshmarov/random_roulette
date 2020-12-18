@@ -23,27 +23,22 @@
 
   .card-footer
     - if roulette.active?
-      = link_to new_roulette_bet_path(roulette, size: 1), class: "btn btn-md btn-success btn-block" do
+      = link_to gamble_roulette_path(roulette, size: 1), method: :patch, class: "btn btn-md btn-success btn-block" do
         Bet #{pluralize(1, 'credit')} 
         %br
         %small
           (win chance: 1/#{roulette.shares_total})
-      = link_to new_roulette_bet_path(roulette, size: roulette.shares_available/2), class: "btn btn-md btn-success btn-block" do
+      = link_to gamble_roulette_path(roulette, size: roulette.shares_available/2), method: :patch, class: "btn btn-md btn-success btn-block" do
         Bet #{pluralize(roulette.shares_available/2, 'credit')} 
         %br
         %small
           (win chance: #{roulette.shares_available/2}/#{roulette.shares_total})
-      = link_to new_roulette_bet_path(roulette, size: roulette.shares_available), class: "btn btn-md btn-success btn-block" do
+      = link_to gamble_roulette_path(roulette, size: roulette.shares_available), method: :patch, class: "btn btn-md btn-success btn-block" do
         Bet #{pluralize(roulette.shares_available, 'credit')} 
         %br
         %small
           (win chance: #{roulette.shares_available}/#{roulette.shares_total})
-      = link_to new_roulette_bet_path(roulette), class: "btn btn-md btn-success btn-block" do
-        Custom bet
     - else
       Winner:
       - if roulette.user.present?
         = link_to roulette.user, user_path(roulette.user)
-
-
-

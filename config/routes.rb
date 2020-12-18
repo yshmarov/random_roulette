@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resources :roulettes, except: [:create, :new, :index, :edit, :update, :destroy] do
     resources :bets, except: [:index, :show, :edit, :update, :destroy]
     get :active, :finished, on: :collection
+    member do
+      patch :gamble
+    end
   end
 
 end
