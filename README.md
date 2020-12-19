@@ -1,24 +1,8 @@
-create account 
-see all roulettes
-top-up balance
-buy shares in open roulette
-when roulette gets filled, weighted random user gets whole prize
-users leaderboard
-charged - only when wants to withdraw funds
-can not buy shares if balance < @share.amount!!
+# RandomRoulette - Ruby on Rails 6 lottery application. Buy lottery tickets and win credits!
 
-TODO
-
-magic bet ammounts
-
-when pool filled
-  select random winner and transfer to his account
-  create new pool
-
-
-Roulette format:
-- piggy bank
-- duel
-- 
-
-user can not have a 50%+ bet
+Functions
+* user authentication with Twitter
+* buy in-game credits with Stripe 
+* buy tickets in a Roulette
+* when a Roulette gets filled, *weighted random winner* gets whole prize
+* leaderboard - who won the most

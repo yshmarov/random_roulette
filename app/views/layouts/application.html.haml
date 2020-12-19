@@ -41,10 +41,13 @@
       = yield
       %br
   %footer
-    .container.text-light
-      Built with <3
+    .container.text-light.text-center
+      = link_to "Source code", "https://github.com/yshmarov/random_roulette", target: :_blank, class: "text-info"
       %br
-      Source code: https://github.com/yshmarov/random_roulette
+      = link_to "My Ruby on Rails blog", "https://blog.corsego.com/", target: :_blank, class: "text-info"
       %br
-      Live demo: https://randomroulette.herokuapp.com/
-
+      = link_to "Ruby on Rails 6 Course: Learn 25+ gems and build a Startup MVP 2020", "https://www.udemy.com/course/2519558/?referralCode=4721E9D437DEE1734159/", target: :_blank, class: "text-info"
+      %br
+      = link_to "Ruby on Rails 6 Course: Learn to Build a B2B SaaS Multitenancy MVP 2020", "https://gumroad.com/l/lHKxjT", target: :_blank, class: "text-info"
+      %br
+      = link_to "You can also follow me on Twitter", "https://twitter.com/yaro_the_slav/", target: :_blank, class: "text-info"
