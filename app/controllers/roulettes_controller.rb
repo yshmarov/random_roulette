@@ -29,17 +29,19 @@ class RoulettesController < ApplicationController
       if @bet.save
         @bet.roulette.update_available_shares
         @bet.user.update_balance
-    
+
         if @bet.roulette.shares_available.zero?
           # randomizer will be here
           weighted_random_winner = User.first
           @roulette.update(user: weighted_random_winner)
           weighted_random_winner.update_balance
           Roulette.create(shares_total: @roulette.shares_total)
+          redirect_to @roulette, notice: "There's a winner!"
+        else
+          redirect_to root_path, notice: "You've made a bet!"
         end
-        redirect_to root_path, notice: "You've made a bet!"
       else
-        render "bets/new"
+        redirect_to root_path, alert: "Something went wrong"
       end
     end
   end

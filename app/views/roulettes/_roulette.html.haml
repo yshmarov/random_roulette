@@ -39,6 +39,8 @@
         %small
           (win chance: #{roulette.shares_available}/#{roulette.shares_total})
     - else
-      Winner:
-      - if roulette.user.present?
-        = link_to roulette.user, user_path(roulette.user)
+      .text-center
+        %h1
+          Winner:
+          - if roulette.user.present?
+            = link_to roulette.user, user_path(roulette.user)
