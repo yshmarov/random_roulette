@@ -35,8 +35,9 @@ class RoulettesController < ApplicationController
       @bet.user.update_balance
 
       if @bet.roulette.shares_available.zero?
-        # randomizer will be here
-        weighted_random_winner = User.first
+        #Roulette.first.random_weighted(Roulette.first.bets.pluck(:user_id, :weight))
+        weighted_random_winner = User.find_by(id: @roulette.random_weighted(@roulette.bets.pluck(:user_id, :weight)))
+        # weighted_random_winner = User.first
         @roulette.update(user: weighted_random_winner)
         weighted_random_winner.update_balance
         Roulette.create(shares_total: @roulette.shares_total)

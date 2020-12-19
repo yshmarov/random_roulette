@@ -15,7 +15,7 @@
         %b= roulette.shares_available
   - if Bet.where(user: current_user, roulette: roulette).any?
     .card-footer
-      Your current bet:
+      Your bet:
       = current_user.bets.where(roulette: roulette).map(&:weight).sum
       %br
       Win chance:

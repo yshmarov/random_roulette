@@ -30,4 +30,20 @@ class Roulette < ApplicationRecord
     shares_available.nonzero?
   end
 
+  # https://www.rubyguides.com/2016/05/weighted-random-numbers/
+  def random_weighted(weighted)
+    weighted = bets.pluck(:user_id, :weight)
+    max    = sum_of_weights(weighted)
+    target = rand(1..max)
+    weighted.each do |item, weight|
+      return item if target <= weight
+      target -= weight
+    end
+  end
+  # https://github.com/szymon-przybyl/weighted_random
+
+  def sum_of_weights(weighted)
+    weighted.inject(0) { |sum, (item, weight)| sum + weight }
+  end
+
 end

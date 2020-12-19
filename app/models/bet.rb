@@ -2,6 +2,8 @@ class Bet < ApplicationRecord
   belongs_to :roulette, counter_cache: true
   belongs_to :user, counter_cache: true
 
+  validates_uniqueness_of :user_id, scope: :roulette_id
+
   validates :weight, presence: true
   validates :weight, numericality: {greater_than: 0}
 

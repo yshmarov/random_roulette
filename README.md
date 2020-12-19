@@ -19,3 +19,7 @@ when pool filled
 Roulette format:
 - piggy bank
 - duel
+- 
+
+
+user can not have a 50%+ bet
