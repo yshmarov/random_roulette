@@ -23,4 +23,12 @@ class Bet < ApplicationRecord
     end
   end
 
+  validate :one_user_cant_have_more_than_half_the_shares
+
+  def one_user_cant_have_more_than_half_the_shares
+    if weight > roulette.shares_total/2
+      errors.add(:weight, "can't be greater than your balance: #{user.balance}")
+    end
+  end
+
 end

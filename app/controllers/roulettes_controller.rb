@@ -19,12 +19,23 @@ class RoulettesController < ApplicationController
     @roulette = Roulette.find(params[:id])
     add_weight = params[:weight].to_i
 
+    @current_bet = current_user.my_bet(@roulette)
+
+    def new_weight
+      if @current_bet.present?
+        params[:weight].to_i + @current_bet.weight
+      else
+        params[:weight].to_i
+      end
+    end
+
     if add_weight > @roulette.shares_available
       redirect_to root_path, alert: "There aren't so many shares left! Maximum #{@roulette.shares_available}"
     elsif add_weight > current_user.balance
       redirect_to root_path, alert: "You don't have enough funds to make such this bet!"
+    elsif new_weight > @roulette.shares_total/2
+      redirect_to root_path, alert: "You can't monopolize a bet!"
     else
-      @current_bet = current_user.bets.where(roulette: @roulette).first
       if @current_bet.present?
         @bet = @current_bet
         @bet.increment!(:weight, by = add_weight)
