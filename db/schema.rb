@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_19_015028) do
+ActiveRecord::Schema.define(version: 2020_12_19_171122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bets", force: :cascade do |t|
-    t.integer "size", default: 0, null: false
+    t.integer "weight", default: 0, null: false
     t.bigint "roulette_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

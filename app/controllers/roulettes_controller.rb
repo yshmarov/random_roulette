@@ -17,15 +17,15 @@ class RoulettesController < ApplicationController
 
   def gamble
     @roulette = Roulette.find(params[:id])
-    new_size = params[:size].to_i
+    new_size = params[:weight].to_i
 
     if new_size > @roulette.shares_available
       redirect_to root_path, alert: "There aren't so many shares left! Maximum #{@roulette.shares_available}"
     elsif new_size > current_user.balance
       redirect_to root_path, alert: "You don't have enough funds to make such this bet!"
     else
-      # @bet = Bet.create(roulette: @roulette, user: current_user, size: new_size)
-      @bet = Bet.new(size: new_size, roulette: @roulette, user: current_user)
+      # @bet = Bet.create(roulette: @roulette, user: current_user, weight: new_size)
+      @bet = Bet.new(weight: new_size, roulette: @roulette, user: current_user)
       if @bet.save
         @bet.roulette.update_available_shares
         @bet.user.update_balance

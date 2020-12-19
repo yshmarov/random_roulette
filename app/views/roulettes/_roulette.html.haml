@@ -16,24 +16,24 @@
   - if Bet.where(user: current_user, roulette: roulette).any?
     .card-footer
       Your current bet:
-      = current_user.bets.where(roulette: roulette).map(&:size).sum
+      = current_user.bets.where(roulette: roulette).map(&:weight).sum
       %br
       Win chance:
-      #{current_user.bets.where(roulette: roulette).map(&:size).sum}/#{roulette.shares_total}
+      #{current_user.bets.where(roulette: roulette).map(&:weight).sum}/#{roulette.shares_total}
 
   .card-footer
     - if roulette.active?
-      = link_to gamble_roulette_path(roulette, size: 1), method: :patch, class: "btn btn-md btn-success btn-block" do
+      = link_to gamble_roulette_path(roulette, weight: 1), method: :patch, class: "btn btn-md btn-success btn-block" do
         Bet #{pluralize(1, 'credit')} 
         %br
         %small
           (win chance: 1/#{roulette.shares_total})
-      = link_to gamble_roulette_path(roulette, size: roulette.shares_available/2), method: :patch, class: "btn btn-md btn-success btn-block" do
+      = link_to gamble_roulette_path(roulette, weight: roulette.shares_available/2), method: :patch, class: "btn btn-md btn-success btn-block" do
         Bet #{pluralize(roulette.shares_available/2, 'credit')} 
         %br
         %small
           (win chance: #{roulette.shares_available/2}/#{roulette.shares_total})
-      = link_to gamble_roulette_path(roulette, size: roulette.shares_available), method: :patch, class: "btn btn-md btn-success btn-block" do
+      = link_to gamble_roulette_path(roulette, weight: roulette.shares_available), method: :patch, class: "btn btn-md btn-success btn-block" do
         Bet #{pluralize(roulette.shares_available, 'credit')} 
         %br
         %small

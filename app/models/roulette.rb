@@ -17,7 +17,7 @@ class Roulette < ApplicationRecord
   end
   
   def update_available_shares
-    update_column :shares_taken, bets.map(&:size).sum
+    update_column :shares_taken, bets.map(&:weight).sum
     update_column :shares_available, (shares_total - shares_taken)
     update_column :percent_left, (shares_taken.to_f/shares_total.to_f*100)
   end
