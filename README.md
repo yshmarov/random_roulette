@@ -21,5 +21,4 @@ Roulette format:
 - duel
 - 
 
-
 user can not have a 50%+ bet

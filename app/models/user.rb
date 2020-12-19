@@ -18,8 +18,8 @@ class User < ApplicationRecord
     update_column :leader_score, (shares_won - bets_sum) 
   end
 
-  def amount_won
-    balance - charges_sum
+  def my_bet(roulette)
+    bets.where(roulette: roulette).first
   end
 
 end

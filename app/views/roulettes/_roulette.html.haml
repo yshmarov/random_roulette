@@ -16,10 +16,10 @@
   - if Bet.where(user: current_user, roulette: roulette).any?
     .card-footer
       Your bet:
-      = current_user.bets.where(roulette: roulette).map(&:weight).sum
+      = current_user.my_bet(roulette).weight
       %br
       Win chance:
-      #{current_user.bets.where(roulette: roulette).map(&:weight).sum}/#{roulette.shares_total}
+      #{current_user.my_bet(roulette).weight}/#{roulette.shares_total}
 
   .card-footer
     - if roulette.active?
