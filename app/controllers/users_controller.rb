@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.all.order(shares_won: :desc)
+    @users = User.all.order(leader_score: :desc)
   end
   
   def show

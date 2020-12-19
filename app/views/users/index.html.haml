@@ -13,6 +13,7 @@
         %th Balance
         %th Games played
         %th Games won
+        %th.bg-success Score
   
     %tbody
       - @users.each do |user|
@@ -24,5 +25,6 @@
           %td= user.balance
           %th= user.bets_count
           %th= user.roulettes_count
+          %th.bg-success= user.leader_score
 
 %br

@@ -15,6 +15,7 @@ class User < ApplicationRecord
     update_column :charges_sum, (charges.map(&:amount).sum) 
     update_column :bets_sum, (bets.map(&:size).sum) 
     update_column :balance, (charges_sum - bets_sum + shares_won) 
+    update_column :leader_score, (shares_won - bets_sum) 
   end
 
   def amount_won
