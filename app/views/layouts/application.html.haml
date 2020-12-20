@@ -21,7 +21,9 @@
       %br
       .text-center
         = link_to root_path, class: "text-dark" do
-          %h1 RandomRoulette
+          %h1 
+            .fa.fa-dice
+            RandomRoulette
         - if current_user
           %h3
             .badge.badge-warning
@@ -40,12 +42,22 @@
       %br
   %footer
     .container.text-light.text-center
-      = link_to "Source code", "https://github.com/yshmarov/random_roulette", target: :_blank, class: "text-info"
+      = link_to "https://github.com/yshmarov/random_roulette", target: :_blank, class: "text-info" do 
+        .fab.fa-github
+        Source code
       %br
-      = link_to "My Ruby on Rails blog", "https://blog.corsego.com/", target: :_blank, class: "text-info"
+      = link_to "https://blog.corsego.com/", target: :_blank, class: "text-info" do
+        .fab.fa-blogger
+        My Ruby on Rails blog
       %br
-      = link_to "Ruby on Rails 6 Course: Learn 25+ gems and build a Startup MVP 2020", "https://www.udemy.com/course/2519558/?referralCode=4721E9D437DEE1734159/", target: :_blank, class: "text-info"
+      = link_to "https://www.udemy.com/course/2519558/?referralCode=4721E9D437DEE1734159/", target: :_blank, class: "text-info" do
+        .fa.fa-book
+        Ruby on Rails 6 Course: Learn 25+ gems and build a Startup MVP 2020
       %br
-      = link_to "Ruby on Rails 6 Course: Learn to Build a B2B SaaS Multitenancy MVP 2020", "https://gumroad.com/l/lHKxjT", target: :_blank, class: "text-info"
+      = link_to "https://gumroad.com/l/lHKxjT", target: :_blank, class: "text-info" do
+        .fa.fa-book
+        Ruby on Rails 6 Course: Learn to Build a B2B SaaS Multitenancy MVP 2020
       %br
-      = link_to "You can also follow me on Twitter", "https://twitter.com/yaro_the_slav/", target: :_blank, class: "text-info"
+      = link_to "https://twitter.com/yaro_the_slav/", target: :_blank, class: "text-info" do
+        .fab.fa-twitter
+        You can also follow me on Twitter
