@@ -33,8 +33,8 @@
         %br
         %small
           (win chance: #{roulette.shares_available/2}/#{roulette.shares_total})
-      = link_to gamble_roulette_path(roulette, weight: roulette.shares_total/2), method: :patch, class: "btn btn-md btn-success btn-block" do
-        Bet #{pluralize(roulette.shares_total/2, 'credit')} 
+      = link_to gamble_roulette_path(roulette, weight: roulette.shares_available), method: :patch, class: "btn btn-md btn-success btn-block" do
+        Bet #{pluralize(roulette.shares_available, 'credit')} 
         %br
         %small
           (win chance: #{roulette.shares_available}/#{roulette.shares_total})
