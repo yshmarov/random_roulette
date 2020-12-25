@@ -23,6 +23,14 @@ class User < ApplicationRecord
     bets.where(roulette: roulette).first
   end
 
+  def max_bettable(roulette)
+    if my_bet(roulette).present?
+      roulette.shares_total/2 - my_bet(roulette).weight
+    else
+      roulette.shares_total/2
+    end
+  end
+
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(email: data['email']).first

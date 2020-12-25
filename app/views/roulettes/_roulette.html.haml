@@ -13,31 +13,30 @@
         %b= roulette.shares_taken
       .progress-bar.bg-danger{style: "width: #{100 - roulette.percent_left}%"}
         %b= roulette.shares_available
-  - if Bet.where(user: current_user, roulette: roulette).any?
+  - if current_user.my_bet(roulette).present?
     .card-footer
       Your bet:
       = current_user.my_bet(roulette).weight
       %br
       Win chance:
       #{current_user.my_bet(roulette).weight}/#{roulette.shares_total}
-
   .card-footer
     - if roulette.active?
       = link_to gamble_roulette_path(roulette, weight: 1), method: :patch, class: "btn btn-md btn-success btn-block" do
         Bet #{pluralize(1, 'credit')} 
         %br
         %small
-          (win chance: 1/#{roulette.shares_total})
-      = link_to gamble_roulette_path(roulette, weight: roulette.shares_available/2), method: :patch, class: "btn btn-md btn-success btn-block" do
-        Bet #{pluralize(roulette.shares_available/2, 'credit')} 
+          (win chance: +1/#{roulette.shares_total})
+      = link_to gamble_roulette_path(roulette, weight: current_user.max_bettable(roulette)/2), method: :patch, class: "btn btn-md btn-success btn-block" do
+        Bet #{pluralize(current_user.max_bettable(roulette)/2, 'credit')} 
         %br
         %small
-          (win chance: #{roulette.shares_available/2}/#{roulette.shares_total})
-      = link_to gamble_roulette_path(roulette, weight: roulette.shares_available), method: :patch, class: "btn btn-md btn-success btn-block" do
-        Bet #{pluralize(roulette.shares_available, 'credit')} 
+          (win chance: +#{current_user.max_bettable(roulette)/2}/#{roulette.shares_total})
+      = link_to gamble_roulette_path(roulette, weight: current_user.max_bettable(roulette)), method: :patch, class: "btn btn-md btn-success btn-block" do
+        Bet #{pluralize(current_user.max_bettable(roulette), 'credit')} 
         %br
         %small
-          (win chance: #{roulette.shares_available}/#{roulette.shares_total})
+          (win chance: +#{current_user.max_bettable(roulette)}/#{roulette.shares_total})
     - else
       .text-center
         %h1
