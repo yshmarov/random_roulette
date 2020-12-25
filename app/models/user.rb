@@ -23,6 +23,18 @@ class User < ApplicationRecord
     bets.where(roulette: roulette).first
   end
 
+  def min_bettable(roulette)
+    if my_bet(roulette).present?
+      if roulette.shares_total/2 == my_bet(roulette).weight
+        0
+      else
+        1
+      end
+    else
+      1
+    end
+  end
+
   def max_bettable(roulette)
     if my_bet(roulette).present?
       roulette.shares_total/2 - my_bet(roulette).weight
