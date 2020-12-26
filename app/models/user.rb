@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: [:twitter, :github]
+         :omniauthable, omniauth_providers: [:twitter, :github, :google_oauth2]
 
   has_many :charges
   has_many :bets

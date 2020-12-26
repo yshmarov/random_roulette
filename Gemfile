@@ -26,3 +26,4 @@ gem "haml-rails", "~> 2.0"
 gem 'simple_form'
 gem 'omniauth-twitter'
 gem "omniauth-github", github: "omniauth/omniauth-github", branch: "master"
+gem 'omniauth-google-oauth2'
